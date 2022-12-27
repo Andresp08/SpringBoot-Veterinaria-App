@@ -46,11 +46,11 @@ public class Cita implements Serializable {
 	private Double valor;
 
 	@ManyToOne
-	@JoinColumn(name = "mascota_id")
+	@JoinColumn(name = "id_mascota")
 	private Mascota mascota;
 
 	@ManyToOne
-	@JoinColumn(name = "veterinario_id")
+	@JoinColumn(name = "id_veterinario")
 	private Veterinario veterinario;
 
 	@OneToMany(mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

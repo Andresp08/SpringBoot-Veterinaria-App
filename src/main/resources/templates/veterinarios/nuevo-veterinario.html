@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container my-5">
+		<h2 th:text="${titulo}" class="text-center">Titulo</h2>
+
+		<div class="row mt-5">
+			<div class="col-md-10 mx-auto">
+				<form th:action="@{/veterinarios/nuevo-veterinario}" th:object="${veterinario}" method="POST">
+					<div class="form-group">
+						<label for="nombre">Nombre completo</label> 
+							<input type="text" class="form-control" id="nombre"
+							aria-describedby="nombre" placeholder="Nombre completo" th:field="*{nombre}"
+							th:value="${nombre}"> 
+							<small id="nombre" class="form-text text-muted">Por favor ingresa tu
+								nombre completo.
+							</small>
+							<small class="text-danger" th:if="${#fields.hasErrors('nombre')}" 
+								th:errors="*{nombre}">
+							</small>
+					</div>
+					<div class="form-group">
+						<label for="telefono">Telefono</label> 
+						<input type="number" class="form-control" id="telefono" placeholder="telefono"
+							th:field="*{telefono}" th:value="${telefono}">
+							<small class="text-danger"
+							th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+					</div>
+					<div class="form-group">
+						<label for="especialidad">Especialidad</label>
+						<input type="text" class="form-control" id="especialidad" 
+							placeholder="Ej: Cirugía" th:field="*{especialidad}" th:value="${especialidad}">
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('especialidad')}" th:errors="*{especialidad}"></small>
+					</div>
+					<div class="d-flex justify-content-end">
+						<button type="submit" class="btn btn-primary">Añadir</button>
+					</div>
+				</form>
+			</div>
+			<!-- col -->
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

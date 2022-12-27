@@ -35,7 +35,7 @@ public class FacturaMedica implements Serializable {
 	private String dosis;
 
 	@ManyToOne
-	@JoinColumn(name = "cita_id")
+	@JoinColumn(name = "id_cita")
 	private Cita cita;
 
 	public Long getId() {

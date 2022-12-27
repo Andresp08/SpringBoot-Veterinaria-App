@@ -45,7 +45,7 @@ public class Mascota implements Serializable{
 	private Date fechaNacimiento;
 
 	@ManyToOne
-	@JoinColumn(name = "propietario_id")
+	@JoinColumn(name = "id_propietario")
 	private Propietario propietario;
 	
 	@OneToMany(mappedBy = "mascota", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
