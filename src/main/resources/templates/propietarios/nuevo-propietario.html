@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container my-5">
+		<h2 class="text-center mt-3" th:text="${titulo}">Titulo</h2>
+
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+				<form th:action="@{/propietarios/nuevo-propietario}" th:object="${propietario}" method="POST">
+					<div class="form-group">
+						<label for="nombre">Nombre completo</label> 
+							<input type="text" class="form-control" id="nombre"
+							aria-describedby="nombre" placeholder="Nombre completo" th:field="*{nombre}"
+							th:value="${nombre}"> 
+							<small id="nombre" class="form-text text-muted">Por favor ingresa tu
+								nombre completo.
+							</small>
+							<small class="text-danger" th:if="${#fields.hasErrors('nombre')}" 
+								th:errors="*{nombre}">
+							</small>
+					</div>
+					<div class="form-group">
+						<label for="telefono">Telefono</label> 
+						<input type="number" class="form-control" id="telefono" placeholder="telefono"
+							th:field="*{telefono}" th:value="${telefono}">
+							<small class="text-danger"
+							th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+					</div>
+					<div class="form-group">
+						<label for="direccion">Dirección</label> 
+						<input type="text" class="form-control" id="direccion" placeholder="Ej: St #43"
+							th:field="*{direccion}" th:value="${direccion}">
+							<small class="text-danger"
+							th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+					</div>
+					
+					<div class="form-group">
+						<label for="correo">Correo</label> 
+						<input type="email" class="form-control" id="correo" placeholder="Ej: john@mail.com"
+							th:field="*{correo}" th:value="${correo}">
+							<small class="text-danger"
+							th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></small>
+					</div>
+					<button type="submit" class="btn btn-primary" th:text="'Añadir'"></button>
+				</form>
+			</div>
+			<!-- col -->
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
