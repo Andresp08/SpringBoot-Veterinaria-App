@@ -39,6 +39,11 @@ public class Mascota implements Serializable{
 
 	private String foto;
 
+	@Column(name = "tipo")
+	@NotEmpty(message = "El campo no puede ir vacio")
+	@NotBlank(message = "El campo no puede ir con espacios en blanco")
+	private String tipoMascota;
+
 	@Column(name = "fecha_nacimiento")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -73,6 +78,14 @@ public class Mascota implements Serializable{
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	public String getTipoMascota() {
+		return tipoMascota;
+	}
+
+	public void setTipoMascota(String tipoMascota) {
+		this.tipoMascota = tipoMascota;
 	}
 
 	public Date getFechaNacimiento() {
