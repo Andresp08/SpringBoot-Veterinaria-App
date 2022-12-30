@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container my-4">
+		<h2 class="text-center mt-3" th:text="${titulo}"></h2>
+
+		<div class="row mt-5">
+			<div class="col-md-10 mx-auto">
+				<form th:action="@{/mascotas/nueva-mascota}" th:object="${mascota}" method="POST">
+					<div class="form-group">
+						<label for="nombre">Nombre de la mascota</label> 
+						<input type="text" class="form-control" id="nombre" placeholder="Terry"
+							th:field="*{nombre}" th:value="${nombre}">
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('nombre')}" 
+							th:errors="*{nombre}"></small>
+					</div>
+
+					<div class="form-group">
+						<label for="foto">Imagen de la mascota</label>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="foto"> <label
+								class="custom-file-label" for="foto">Sube la foto...</label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Tipo">Tipo</label> <input type="text"
+							class="form-control" id="tipo" placeholder="Canino" 
+							th:field="*{tipoMascota}" th:value="${tipoMascota}">
+							<small class="text-danger"
+							th:if="${#fields.hasErrors('tipoMascota')}" 
+							th:errors="*{tipoMascota}"></small>
+					</div>
+
+					<div class="form-group">
+						<label for="nacimiento">Fecha de nacimiento</label> 
+						<input type="date" class="form-control" id="nacimiento"
+							th:field="*{fechaNacimiento}" th:value="${fechaNacimiento}">
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('fechaNacimiento')}" 
+							th:errors="*{fechaNacimiento}"></small>
+					</div>
+					<div class="form-group">
+						<label for="propietario">Propietario</label> 
+						<select class="form-control" id="propietario" name="propietario">
+							<option selected="selected" disabled="disabled">Propietario</option>
+							<option th:each="propietario : ${propietarios}"
+								th:value="${propietario.id}" th:text="${propietario.nombre}"
+								th:field="*{propietario}"></option>
+						</select>
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('propietario')}" 
+							th:errors="*{propietario}"></small>
+					</div>
+					
+					 <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+				</form>
+			</div>
+			<!-- col -->
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

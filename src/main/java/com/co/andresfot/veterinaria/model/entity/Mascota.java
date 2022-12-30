@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -47,6 +48,7 @@ public class Mascota implements Serializable{
 	@Column(name = "fecha_nacimiento")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@PastOrPresent(message = "La fecha indicada supera el día actual, por favor corrigela")
 	private Date fechaNacimiento;
 
 	@ManyToOne
