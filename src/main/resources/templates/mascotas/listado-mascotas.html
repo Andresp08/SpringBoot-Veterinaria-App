@@ -23,6 +23,7 @@
 							<th scope="col">Propietario</th>
 							<th scope="col">Editar</th>
 							<th scope="col">Eliminar</th>
+							<th scope="col">Ver Detalle</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,6 +32,10 @@
 							<td th:text="${mascota.tipoMascota}">Telefono</td>
 							<td th:text="${#calendars.format(mascota.fechaNacimiento,'dd MMMM yyyy')}">Fecha Nacimiento</td>
 							<td th:text="${mascota.propietario.nombre}">Propietario</td>
+							<td>
+								<a th:href="@{/mascotas/detalle-mascota/} + ${mascota.id}"
+									class="btn btn-success" th:text="${'Ver Detalle'}"></a>
+							</td>
 							<td>
 								<a th:href="@{/mascotas/editar-mascota/} + ${mascota.id}"
 									class="btn btn-danger" th:text="${'Editar'}"></a>

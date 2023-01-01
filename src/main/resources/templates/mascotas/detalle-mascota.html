@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container my-5">
+		<h2 class="text-center mt-3" th:text="${titulo}">Titulo</h2>
+
+		<div class="row mt-4">
+			<div class="col-md-6 mx-auto">
+				<div class="card">
+					<img class="card-img-top img-fluid w-100 mb-3"
+						th:src="@{'/mascotas/uploads/' + ${mascota.foto}}"
+						th:alt="${mascota.nombre}" style="max-height: 500px;" />
+					<div class="card-body">
+						<h5 class="card-title" th:text="${mascota.nombre}">Nombre</h5>
+						<p class="font-weight-bold">
+							Fecha de nacimiento: <span
+								class="card-subtitle font-weight-normal"
+								th:text="${#calendars.format(mascota.fechaNacimiento,'dd MMMM yyyy')}">
+								Fecha Nacimiento </span>
+						</p>
+
+						<p class="card-text font-weight-bold">
+							Propietario: <span class="font-weight-normal"
+								th:text="${mascota.propietario.nombre}"> Propietario </span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- col -->
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
