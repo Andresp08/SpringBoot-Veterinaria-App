@@ -12,16 +12,17 @@
 				<form th:action="@{/citas/nueva-cita}" th:object="${cita}"
 					method="POST">
 					<div class="form-group">
-						<label for="fechaCita">Fecha de la cita</label> <input type="date"
-							class="form-control" id="fechaCita" th:field="*{fechaCita}"
-							th:value="${fechaCita}"> <small class="text-danger"
-							th:if="${#fields.hasErrors('fechaCita')}"
+						<label for="fechaCita">Fecha de la cita</label> 
+						<input type="date" class="form-control" id="fechaCita" th:field="*{fechaCita}"
+							th:value="${fechaCita}"> 
+						<small class="text-danger" th:if="${#fields.hasErrors('fechaCita')}"
 							th:errors="*{fechaCita}"></small>
 					</div>
 
 					<div class="form-group">
 						<label for="diagnositico">Diagnostico</label>
-						<textarea class="form-control" id="diagnositico" rows="3"></textarea>
+						<textarea class="form-control" id="diagnositico" rows="3"
+						th:field="*{diagnostico}" th:value="${diagnostico}"></textarea>
 						<small class="text-danger"
 							th:if="${#fields.hasErrors('diagnostico')}"
 							th:errors="*{diagnostico}"></small>
@@ -30,16 +31,16 @@
 					<div class="form-group">
 						<label for="valor">Valor consulta</label> <input
 							type="number" class="form-control" name="valor"
-							placeholder="50.000" required="true" step="any">
+							placeholder="50.000" step="any"
+							th:field="*{valor}" th:value="${valor}">
 						<small class="text-danger"
 							th:if="${#fields.hasErrors('valor')}"
 							th:errors="*{valor}"></small>
 					</div>
 
 					<div class="form-group">
-						<label for="mascota">Mascota</label> <select
-							class="form-control" id="mascota" name="mascota">
-							<option selected="selected" disabled="disabled">Mascota</option>
+						<label for="mascota">Mascota</label> 
+						<select class="form-control" id="mascota" name="mascota" required="required">
 							<option th:each="mascota : ${mascotas}"
 								th:value="${mascota.id}" th:text="${mascota.nombre}"
 								th:field="*{mascota}"></option>
@@ -49,9 +50,9 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="veterinario">Veterinario</label> <select
+						<label for="veterinario">Veterinario</label> 
+						<select required="required"
 							class="form-control" id="veterinario" name="veterinario">
-							<option selected="selected" disabled="disabled">Veterinario</option>
 							<option th:each="veterinario : ${veterinarios}"
 								th:value="${veterinario.id}" th:text="${veterinario.nombre}"
 								th:field="*{veterinario}"></option>

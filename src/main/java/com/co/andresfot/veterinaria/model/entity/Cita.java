@@ -38,10 +38,12 @@ public class Cita implements Serializable {
 	@FutureOrPresent(message = "La fecha de la cita no puede ser inferior al día de hoy")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull( message =  "El campo no puede ir vacio")
 	private Date fechaCita;
 
 	@NotEmpty(message = "El campo no puede ir vacio")
 	@NotBlank(message = "El campo no puede ir con espacios en blanco")
+	@NotNull(message = "el campo es requerido")
 	private String diagnostico;
 
 	@NotNull(message = "El valor no puede ir vacio")
@@ -49,10 +51,12 @@ public class Cita implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "id_mascota")
+	@NotNull( message =  "El campo no puede ir vacio")
 	private Mascota mascota;
 
 	@ManyToOne
 	@JoinColumn(name = "id_veterinario")
+	@NotNull( message =  "El campo no puede ir vacio")
 	private Veterinario veterinario;
 
 	@OneToMany(mappedBy = "cita", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
