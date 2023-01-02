@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container my-5">
+		<h2 class="text-center mt-3" th:text="${titulo}">Titulo</h2>
+
+		<div class="row mt-5">
+			<div class="col-md-10 mx-auto">
+				<form th:action="@{/citas/nueva-cita}" th:object="${cita}"
+					method="POST">
+					<div class="form-group">
+						<label for="fechaCita">Fecha de la cita</label> <input type="date"
+							class="form-control" id="fechaCita" th:field="*{fechaCita}"
+							th:value="${fechaCita}"> <small class="text-danger"
+							th:if="${#fields.hasErrors('fechaCita')}"
+							th:errors="*{fechaCita}"></small>
+					</div>
+
+					<div class="form-group">
+						<label for="diagnositico">Diagnostico</label>
+						<textarea class="form-control" id="diagnositico" rows="3"></textarea>
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('diagnostico')}"
+							th:errors="*{diagnostico}"></small>
+					</div>
+
+					<div class="form-group">
+						<label for="valor">Valor consulta</label> <input
+							type="number" class="form-control" name="valor"
+							placeholder="50.000" required="true" step="any">
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('valor')}"
+							th:errors="*{valor}"></small>
+					</div>
+
+					<div class="form-group">
+						<label for="mascota">Mascota</label> <select
+							class="form-control" id="mascota" name="mascota">
+							<option selected="selected" disabled="disabled">Mascota</option>
+							<option th:each="mascota : ${mascotas}"
+								th:value="${mascota.id}" th:text="${mascota.nombre}"
+								th:field="*{mascota}"></option>
+						</select> <small class="text-danger"
+							th:if="${#fields.hasErrors('mascota')}"
+							th:errors="*{mascota}"></small>
+					</div>
+					
+					<div class="form-group">
+						<label for="veterinario">Veterinario</label> <select
+							class="form-control" id="veterinario" name="veterinario">
+							<option selected="selected" disabled="disabled">Veterinario</option>
+							<option th:each="veterinario : ${veterinarios}"
+								th:value="${veterinario.id}" th:text="${veterinario.nombre}"
+								th:field="*{veterinario}"></option>
+						</select> <small class="text-danger"
+							th:if="${#fields.hasErrors('veterinario')}"
+							th:errors="*{veterinario}"></small>
+					</div>
+
+					<button class="btn btn-primary" type="submit">Guardar
+						Cambios</button>
+				</form>
+			</div>
+			<!-- col -->
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

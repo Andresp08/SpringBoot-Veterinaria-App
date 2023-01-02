@@ -175,7 +175,7 @@ public class MascotaController {
 		Mascota mascota = mascotaService.findMascotaById(id);
 		
 		model.addAttribute("mascota", mascota);
-		model.addAttribute("titulo", "Detalle mascota " + id);
+		model.addAttribute("titulo", "Hoja de vida de " + mascota.getNombre());
 		
 		return "mascotas/detalle-mascota";
 	}
