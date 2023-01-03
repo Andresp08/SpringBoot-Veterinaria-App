@@ -33,16 +33,16 @@
 							<td th:text="${cita.veterinario.nombre}">veterinario</td>
 							<td th:text="${#numbers.formatDecimal(cita.valor, 0, 'COMMA', 3, 'POINT')}">valor</td>
 							<td>
-								<a  
+								<a  th:href="@{/citas/detalle-cita/} + ${cita.id}"
 									class="btn btn-success" th:text="${'Detalle'}"></a>
 							</td>
 							<td>
-								<a  
-									class="btn btn-danger" th:text="${'Editar'}"></a>
+								<a  th:href="@{/citas/editar-cita/} + ${cita.id}"
+									class="btn btn-primary" th:text="${'Editar'}"></a>
 							</td>
 							<td>
-								<a  
-									class="btn btn-primary" th:text="${'Eliminar'}"></a>
+								<a  th:href="@{/citas/eliminar-cita/} + ${cita.id}"
+									class="btn btn-danger" th:text="${'Eliminar'}"></a>
 							</td>
 						</tr>
 					</tbody>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,9 +64,9 @@ public class CitaController {
 
 	@PostMapping("/nueva-cita")
 	private String guardarCita(@Valid Cita cita, BindingResult result, Model model,
-			@RequestParam(name = "mascota", required = true) Long idMascota, 
-			@RequestParam(name = "veterinario", required = true) Long idVeterinario,
-			RedirectAttributes flash, SessionStatus status) {
+			@RequestParam(name = "mascota", required = true) Long idMascota,
+			@RequestParam(name = "veterinario", required = true) Long idVeterinario, RedirectAttributes flash,
+			SessionStatus status) {
 
 		if (result.hasErrors()) {
 			List<Mascota> mascotas = mascotaService.findAllMascotas();
@@ -90,4 +91,75 @@ public class CitaController {
 		return "redirect:/citas/listado-citas";
 	}
 
+	@GetMapping("/detalle-cita/{id}")
+	public String detalleCita(@PathVariable Long id, Model model, RedirectAttributes flash) {
+
+		Cita cita = null;
+
+		if (id > 0) {
+			cita = citaService.findCitaById(id);
+
+			if (cita == null) {
+				flash.addFlashAttribute("error", "Cita no existe en la BBDD!!");
+			}
+		} else {
+			flash.addFlashAttribute("error", "Cita no existe en la BBDD!!");
+		}
+
+		model.addAttribute("titulo", "Detalle cita");
+		model.addAttribute("cita", cita);
+
+		return "citas/detalle-cita";
+	}
+
+	@GetMapping("/editar-cita/{id}")
+	public String editarMascota(@PathVariable Long id, Model model, RedirectAttributes flash) {
+		
+		Cita cita = null;
+		
+		List<Mascota> mascotas = mascotaService.findAllMascotas();
+		List<Veterinario> veterinarios = veterinarioService.findAllVeterinarios();
+
+		if (id > 0) {
+			cita = citaService.findCitaById(id);
+
+			if (cita == null) {
+				flash.addFlashAttribute("error", "Cita no existe en la BBDD!!");
+				return "redirect:/citas/listado-citas";
+			}
+		} else {
+			flash.addFlashAttribute("error", "Cita no existe en la BBDD!!");
+			return "redirect:/citas/listado-citas";
+		}
+
+		model.addAttribute("titulo", "Editar cita cita");
+		model.addAttribute("mascotas", mascotas);
+		model.addAttribute("veterinarios", veterinarios);
+		model.addAttribute("cita", cita);
+		
+		return "citas/nueva-cita";
+	}
+	
+	@GetMapping("/eliminar-cita/{id}")
+	public String eliminarMascota(@PathVariable Long id, Model model, RedirectAttributes flash) {
+		
+		Cita cita = null;
+		
+		if (id > 0) {
+			cita = citaService.findCitaById(id);
+
+			if (cita == null) {
+				flash.addFlashAttribute("error", "Cita no existe en la BBDD!!");
+				return "redirect:/citas/listado-citas";
+			}
+		} else {
+			flash.addFlashAttribute("error", "Cita no existe en la BBDD!!");
+			return "redirect:/citas/listado-citas";
+		}
+		
+		citaService.deleteCitaById(id);
+		flash.addFlashAttribute("success", "Cita eliminada con exito!!");
+		
+		return "redirect:/citas/listado-citas";
+	}
 }
