@@ -7,27 +7,60 @@
 	<div class="container my-5">
 		<h2 class="text-center mt-3" th:text="${titulo}">Titulo</h2>
 
-		<div class="row">
-			<div class="col-md-8 mx-auto">
+		<div class="d-flex justify-content-end">
+			<a class="btn btn-primary" th:text="'Emitir factura'"></a>
+		</div>
+
+		<div class="row mt-5">
+			<div class="col-md-6">
 				<div class="jumbotron">
 					<h1 class="display-4" th:text="${cita.mascota.nombre}">Mascota!</h1>
-					<p class="font-weight-bold">Diagnostico:
-						<span class="lead font-weight-normal" th:text="${cita.diagnostico}"></span>					
+					<p class="font-weight-bold">
+						Diagnostico: <span class="lead font-weight-normal"
+							th:text="${cita.diagnostico}"></span>
 					</p>
 					<hr class="my-4">
-					<p class="font-weight-bold">Fecha Cita:
-						<span class="font-weight-normal" 
-						th:text="${#calendars.format(cita.fechaCita,'dd MMMM yyyy')}"></span>
+					<p class="font-weight-bold">
+						Fecha Cita: <span class="font-weight-normal"
+							th:text="${#calendars.format(cita.fechaCita,'dd MMMM yyyy')}"></span>
 					</p>
-					<p class="font-weight-bold">Atendido por:
-						<span th:text="${cita.veterinario.nombre}" class="font-weight-normal">Veterinario</span>
+					<p class="font-weight-bold">
+						Atendido por: <span th:text="${cita.veterinario.nombre}"
+							class="font-weight-normal">Veterinario</span>
 					</p>
-					<p class="font-weight-bold">Valor de la consulta:
-						<span th:text="${#numbers.formatDecimal(cita.valor, 0, 'COMMA', 3, 'POINT')}" class="font-weight-normal">Valor</span>
+					<p class="font-weight-bold">
+						Valor de la consulta: <span
+							th:text="${#numbers.formatDecimal(cita.valor, 0, 'COMMA', 3, 'POINT')}"
+							class="font-weight-normal">Valor</span>
 					</p>
 				</div>
 			</div>
 			<!-- col -->
+			<div class="col-md-6">
+
+				<div class="card-title list-group-item active" 
+					th:if="${#lists.isEmpty(listadoFacturas)}"
+					th:text="${'No hay facturas disponibles para el paciente'}"> 
+				</div>
+
+				<ul th:if="${not #lists.isEmpty(listadoFacturas)}" 
+					class="list-group mb-4" th:each="factura : ${listadoFacturas}">
+					<li class="card-title list-group-item active"
+						th:text="${'Detalle factura N° ' + factura.id}">Detalle
+						Factura</li>
+					<li class="list-group-item font-weight-bold">Medicamento: <span
+						class="font-weight-normal" th:text="${factura.medicamento}">
+					</span>
+					</li>
+					<li class="list-group-item font-weight-bold">Total Pagar: <span
+						class="font-weight-normal"
+						th:text="${#numbers.formatDecimal(factura.precio, 0, 'COMMA', 3, 'POINT')}"></span>
+					</li>
+					<li class="list-group-item font-weight-bold">Dosis: <span
+						class="font-weight-normal" th:text="${factura.dosis}"></span>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 

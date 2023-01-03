@@ -39,6 +39,4 @@ public class CitaServiceImpl implements ICitaService{
 	public void deleteCitaById(Long id) {
 		citaDao.deleteById(id);
 	}
-
-	
 }

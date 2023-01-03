@@ -18,9 +18,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.co.andresfot.veterinaria.model.entity.Cita;
+import com.co.andresfot.veterinaria.model.entity.FacturaMedica;
 import com.co.andresfot.veterinaria.model.entity.Mascota;
 import com.co.andresfot.veterinaria.model.entity.Veterinario;
 import com.co.andresfot.veterinaria.model.service.ICitaService;
+import com.co.andresfot.veterinaria.model.service.IFacturaMedicaService;
 import com.co.andresfot.veterinaria.model.service.IMascotaService;
 import com.co.andresfot.veterinaria.model.service.IVeterinarioService;
 
@@ -37,6 +39,9 @@ public class CitaController {
 
 	@Autowired
 	private IVeterinarioService veterinarioService;
+	
+	@Autowired
+	private IFacturaMedicaService facturaMedicaService;
 
 	@GetMapping("/listado-citas")
 	public String listarCitas(Model model) {
@@ -95,6 +100,8 @@ public class CitaController {
 	public String detalleCita(@PathVariable Long id, Model model, RedirectAttributes flash) {
 
 		Cita cita = null;
+		//post por categoria
+		List<FacturaMedica> listadoFacturas = facturaMedicaService.findCitaByIdWithFacturas(id);
 
 		if (id > 0) {
 			cita = citaService.findCitaById(id);
@@ -108,6 +115,7 @@ public class CitaController {
 
 		model.addAttribute("titulo", "Detalle cita");
 		model.addAttribute("cita", cita);
+		model.addAttribute("listadoFacturas", listadoFacturas);
 
 		return "citas/detalle-cita";
 	}
