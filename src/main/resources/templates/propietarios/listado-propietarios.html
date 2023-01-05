@@ -33,11 +33,11 @@
 							<td th:text="${propietario.correo}">Correo</td>
 							<td>
 								<a  th:href="@{/propietarios/editar-propietario/} + ${propietario.id}"
-									class="btn btn-danger" th:text="${'Editar'}"></a>
+									class="btn btn-primary" th:text="${'Editar'}"></a>
 							</td>
 							<td>
 								<a  th:href="@{/propietarios/eliminar-propietario/} + ${propietario.id}"
-									class="btn btn-primary" th:text="${'Eliminar'}"></a>
+									class="btn btn-danger" th:text="${'Eliminar'}"></a>
 							</td>
 						</tr>
 					</tbody>

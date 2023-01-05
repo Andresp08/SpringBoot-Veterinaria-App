@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head">
-<body>
+<body class="p-0 m-0">
 	<header th:replace="layout/layout :: header"></header>
-	
-	<div class="container my-5">
-		<h2 class="text-center mt-3" th:text="${titulo}">Titulo</h2>
+
+	<div class="container-fluid p-0 m-0">
+		<img th:src="@{/img/bg.png}" class="img-fluid w-100 h-100"/>
 	</div>
-	
+
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

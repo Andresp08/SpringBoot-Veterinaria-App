@@ -21,9 +21,9 @@
 							<th scope="col">Tipo</th>
 							<th scope="col">Fecha Nacimiento</th>
 							<th scope="col">Propietario</th>
+							<th scope="col">Ver Detalle</th>
 							<th scope="col">Editar</th>
 							<th scope="col">Eliminar</th>
-							<th scope="col">Ver Detalle</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,11 +38,11 @@
 							</td>
 							<td>
 								<a th:href="@{/mascotas/editar-mascota/} + ${mascota.id}"
-									class="btn btn-danger" th:text="${'Editar'}"></a>
+									class="btn btn-primary" th:text="${'Editar'}"></a>
 							</td>
 							<td>
 								<a  th:href="@{/mascotas/eliminar-mascota/} + ${mascota.id}"
-									class="btn btn-primary" th:text="${'Eliminar'}"></a>
+									class="btn btn-danger" th:text="${'Eliminar'}"></a>
 							</td>
 						</tr>
 					</tbody>

@@ -30,11 +30,11 @@
 							<td th:text="${veterinario.especialidad}">Especialidad</td>
 							<td>
 								<a th:href="@{/veterinarios/editar-veterinario/} + ${veterinario.id}" 
-									class="btn btn-danger" th:text="${'Editar'}"></a>
+									class="btn btn-primary" th:text="${'Editar'}"></a>
 							</td>
 							<td>
 								<a th:href="@{/veterinarios/eliminar-veterinario/} + ${veterinario.id}" 
-									class="btn btn-primary" th:text="${'Eliminar'}"></a>
+									class="btn btn-danger" th:text="${'Eliminar'}"></a>
 							</td>
 						</tr>
 					</tbody>

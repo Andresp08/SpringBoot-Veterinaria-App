@@ -9,23 +9,36 @@
 
 		<div class="row mt-5">
 			<div class="col-md-8 mx-auto">
-				<form>
+				<form th:action="@{/facturas/guardar-factura}" th:object="${facturaMedica}" 
+					method="POST">
+					
 					<div class="form-group">
-						<label for="cita">Cita</label> <input type="text"
-							class="form-control" id="cita" placeholder="cita">
+					<label for="cita">Cita</label> 
+						<input type="text"class="form-control" id="cita" th:value="${cita.id}" disabled='disabled'>
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('cita')}" th:errors="*{cita}"></small>
+					</div>
+					
+					<div class="form-group">
+						<label for="medicamenteo">Medicamento</label> 
+						<input type="text" class="form-control" id="medicamento" 
+						placeholder="Medicamento" th:field="*{medicamento}" th:value="${medicamento}">
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('medicamento')}" th:errors="*{medicamento}"></small>
 					</div>
 					<div class="form-group">
-						<label for="medicamenteo">Medicamento</label> <input type="text"
-							class="form-control" id="medicamento" placeholder="Medicamento">
-					</div>
-					<div class="form-group">
-						<label for="precio">Precio</label> <input type="number"
-							class="form-control" id="precio" placeholder="4300" step="any">
+						<label for="precio">Precio</label> 
+						<input type="number" class="form-control" id="precio" placeholder="4300" 
+							step="any" th:field="*{precio}" th:value="${precio}">
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
 					</div>
 					<div class="form-group">
 						<label for="dosis">Dosis</label>
 						<textarea class="form-control" id="dosis"
-							rows="3"></textarea>
+							rows="3" th:field="*{dosis}" th:value="${dosis}"></textarea>
+						<small class="text-danger"
+							th:if="${#fields.hasErrors('dosis')}" th:errors="*{dosis}"></small>
 					</div>
 					<button type="submit" class="btn btn-primary">Guardar Factura</button>
 					

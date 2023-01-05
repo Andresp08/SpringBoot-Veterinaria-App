@@ -10,3 +10,7 @@ footer {
    bottom: 0;
    width: 100%;
 }
+
+.navbar-dark{
+	background-color: #FFC93C!important;
+}

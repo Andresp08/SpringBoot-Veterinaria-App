@@ -17,9 +17,21 @@ public class FacturaMedicaServiceImpl implements IFacturaMedicaService {
 	private IFacturaMedicaDao facturaMedicaDao;
 	
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<FacturaMedica> findCitaByIdWithFacturas(Long id) {
 		return facturaMedicaDao.fetchCitaByIdWithFacturas(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public FacturaMedica findFacturaById(Long id) {
+		return facturaMedicaDao.findById(id).orElse(null);
+	}
+
+	@Override
+	@Transactional
+	public void saveFacturaMedica(FacturaMedica facturaMedica) {
+		facturaMedicaDao.save(facturaMedica);
 	}
 
 }

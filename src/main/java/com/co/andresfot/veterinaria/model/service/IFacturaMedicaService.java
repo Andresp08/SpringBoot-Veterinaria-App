@@ -8,4 +8,8 @@ public interface IFacturaMedicaService {
 
 	public List<FacturaMedica> findCitaByIdWithFacturas(Long id);
 	
+	public FacturaMedica findFacturaById(Long id);
+	
+	public void saveFacturaMedica(FacturaMedica facturaMedica);
+	
 }
