@@ -7,13 +7,14 @@
 	title here</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+<link rel="stylesheet" th:href="@{/css/carousel.css}" />
 <link rel="stylesheet" th:href="@{/css/footer.css}" />
 </head>
 <body>
 
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-			<a class="navbar-brand" th:href="@{/listar}">VetySystem</a>
+			<a class="navbar-brand" th:href="@{/index}">Vety <span>System</span> </a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +23,7 @@
 			<div class="collapse navbar-collapse d-flex justify-content-between"
 				id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link"
+					<li class="nav-item"><a class="nav-link"
 						th:href="@{/index}">Inicio <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" 
@@ -37,9 +38,6 @@
 					<li class="nav-item"><a class="nav-link" 
 						th:href="@{/citas/listado-citas}">Citas Médicas</a>
 					</li>
-				</ul>
-				<ul class="navbar-nav navbar-right" style=" gap: 12px;">
-					<a>Hello world!</a>
 				</ul>
 			</div>
 		</nav>
@@ -62,13 +60,17 @@
 
 	<footer th:fragment="footer" class="container-fluid bg-dark py-3">
 
-		<p class="text-center text-white font-weight-bold">Todos los
+		<p class="text-center text-white font-weight-bold footer-text">Todos los
 			derechos reservados</p>
 
 		<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
 		<script th:src="@{/js/popper.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/jquery-ui.min.js}"></script>
+		
+		<script th:src="@{/js/carousel.js}"></script>
+		<script src="https://kit.fontawesome.com/59f66a0e33.js"
+			crossorigin="anonymous"></script>
 	</footer>
 
 </body>

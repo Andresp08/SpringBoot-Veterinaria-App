@@ -140,7 +140,7 @@ public class CitaController {
 			return "redirect:/citas/listado-citas";
 		}
 
-		model.addAttribute("titulo", "Editar cita cita");
+		model.addAttribute("titulo", "Editar Cita Medica");
 		model.addAttribute("mascotas", mascotas);
 		model.addAttribute("veterinarios", veterinarios);
 		model.addAttribute("cita", cita);

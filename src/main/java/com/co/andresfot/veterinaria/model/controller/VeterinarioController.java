@@ -80,6 +80,7 @@ public class VeterinarioController {
 			return "redirect:/veterinarios/listado-veterinarios";
 		}
 
+		model.addAttribute("titulo", "Editar Veterinario");
 		model.addAttribute("veterinario", veterinario);
 
 		return "veterinarios/nuevo-veterinario";
