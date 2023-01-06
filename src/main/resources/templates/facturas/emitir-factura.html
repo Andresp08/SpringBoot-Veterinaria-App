@@ -12,9 +12,9 @@
 				<form th:action="@{/facturas/guardar-factura}" th:object="${facturaMedica}" 
 					method="POST">
 					
-					<div class="form-group">
+					<div class="form-group d-none">
 					<label for="cita">Cita</label> 
-						<input type="text"class="form-control" id="cita" th:value="${cita.id}" disabled='disabled'>
+						<input type="text"class="form-control d-none" id="cita" th:value="${cita.id}" disabled='disabled'>
 						<small class="text-danger"
 							th:if="${#fields.hasErrors('cita')}" th:errors="*{cita}"></small>
 					</div>

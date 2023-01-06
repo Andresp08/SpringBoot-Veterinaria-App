@@ -50,6 +50,25 @@ h2{
 	border-color: #1746A2;
 }
 
+.titulo-principal, span{
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.titulo-principal{
+	color: #6B728E;
+}
+
+.titulo-principal > span{
+	color: #FF731D;
+}
+
+.fa-phone,
+.fa-user{
+	color: #FF731D;
+	font-weight: 700;
+}
+
 footer {
    position: absolute;
    bottom: 0;
