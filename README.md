@@ -2,7 +2,7 @@
 
 ## Welcome! 👋
 
-## VetySystem is pet clinic, you can go with your pet and receive attention from a profesional medical pet.
+## VetySystem is a pet clinic, you can go with your pet and receive attention from a profesional medical pet.
 
 ### This project contains: 
 
